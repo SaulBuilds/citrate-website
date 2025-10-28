@@ -120,7 +120,7 @@ export default function Tokenomics() {
         </div>
 
         <div className="mt-20 max-w-4xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-8">
             <h3 className="text-2xl font-bold mb-6 text-center text-white">Token Utility</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">

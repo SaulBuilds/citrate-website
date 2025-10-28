@@ -84,7 +84,7 @@ export default function ProblemSection() {
             return (
               <div
                 key={problem.title}
-                className="problem-card group bg-white/5 border-2 border-white/20 rounded-lg p-8 transition-all duration-300 hover:border-primary hover:shadow-[0_0_30px_rgba(255,149,0,0.2)]"
+                className="problem-card group bg-white/10 border-2 border-white/30 rounded-lg p-8 transition-all duration-300 hover:border-primary hover:shadow-[0_0_30px_rgba(255,149,0,0.2)]"
                 data-testid={problem.testId}
               >
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
