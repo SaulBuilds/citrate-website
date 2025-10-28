@@ -21,6 +21,7 @@ export default function Navigation() {
     { label: "Architecture", href: "#architecture" },
     { label: "Use Cases", href: "#use-cases" },
     { label: "Roadmap", href: "#roadmap" },
+    { label: "Dashboard", href: "/dashboard" },
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "#faq" },
   ];
