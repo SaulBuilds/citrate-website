@@ -69,7 +69,7 @@ export default function DownloadsPage() {
     {
       icon: Monitor,
       title: "GUI Wallet",
-      description: "Desktop wallet for managing LATT tokens, deploying contracts, and interacting with AI models.",
+      description: "Desktop wallet for managing SALT tokens, deploying contracts, and interacting with AI models.",
       version: "v0.2.0",
       platforms: ["Linux", "macOS", "Windows"],
       features: [

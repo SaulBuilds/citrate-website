@@ -80,7 +80,7 @@ POST /v1/messages
     {
       icon: Cpu,
       number: "Layer 2",
-      title: "Execution Layer (LVM)",
+      title: "Execution Layer (CVM)",
       description: "EVM-compatible virtual machine with AI-specific precompiles and native tensor operations.",
       features: [
         "100% EVM bytecode compatibility",

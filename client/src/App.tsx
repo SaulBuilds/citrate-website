@@ -13,6 +13,8 @@ import ArchitecturePage from "@/pages/architecture";
 import UseCasesPage from "@/pages/use-cases";
 import RoadmapPage from "@/pages/roadmap";
 import DocumentationPage from "@/pages/documentation";
+import ContactPage from "@/pages/contact";
+import DownloadsPage from "@/pages/downloads";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -24,6 +26,8 @@ function Router() {
       <Route path="/use-cases" component={UseCasesPage} />
       <Route path="/roadmap" component={RoadmapPage} />
       <Route path="/documentation" component={DocumentationPage} />
+      <Route path="/contact" component={ContactPage} />
+      <Route path="/downloads" component={DownloadsPage} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPostPage} />
       <Route path="/dashboard" component={Dashboard} />

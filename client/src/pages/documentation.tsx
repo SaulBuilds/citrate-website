@@ -152,7 +152,7 @@ export default function DocumentationPage() {
 └─────────────────────────────────────────────────┘
                         ↕
 ┌─────────────────────────────────────────────────┐
-│  Layer 2: Execution Layer (LVM)                 │
+│  Layer 2: Execution Layer (CVM)                 │
 │  - EVM-compatible bytecode execution             │
 │  - AI precompiles (0x1000-0x1004)               │
 └─────────────────────────────────────────────────┘
@@ -178,7 +178,7 @@ export default function DocumentationPage() {
                     </div>
 
                     <div className="bg-card border-2 border-border rounded-lg p-6">
-                      <h4 className="text-xl font-bold mb-3 text-primary">Execution Layer (LVM)</h4>
+                      <h4 className="text-xl font-bold mb-3 text-primary">Execution Layer (CVM)</h4>
                       <ul className="space-y-2">
                         <li className="text-foreground">• 100% EVM-compatible bytecode interpreter</li>
                         <li className="text-foreground">• StateDB: Merkle Patricia Trie account state</li>

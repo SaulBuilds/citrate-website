@@ -22,8 +22,9 @@ export default function FullScreenNav({ isOpen, onClose }: FullScreenNavProps) {
     { label: "Dashboard", href: "/dashboard" },
     { label: "BlockDAG", href: "/blockdag" },
     { label: "Documentation", href: "/documentation" },
+    { label: "Downloads", href: "/downloads" },
+    { label: "Contact", href: "/contact" },
     { label: "Blog", href: "/blog" },
-    { label: "FAQ", href: "/#faq" },
   ];
 
   useEffect(() => {

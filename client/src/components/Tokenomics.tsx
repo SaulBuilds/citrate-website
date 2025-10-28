@@ -81,10 +81,10 @@ export default function Tokenomics() {
     <section ref={sectionRef} className="py-24 bg-black text-white" data-testid="section-tokenomics">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-6xl font-bold text-center mb-4" data-testid="text-tokenomics-title">
-          <span className="text-primary">LATT</span> Tokenomics
+          <span className="text-primary">SALT</span> Tokenomics
         </h2>
         <p className="text-xl text-center text-white/70 mb-20 max-w-3xl mx-auto">
-          Total Supply: 1,000,000,000 LATT
+          Total Supply: 1,000,000,000 SALT
         </p>
 
         <div className="max-w-5xl mx-auto space-y-6">
@@ -128,14 +128,14 @@ export default function Tokenomics() {
                   <span className="text-primary text-xl font-bold">1</span>
                 </div>
                 <h4 className="font-semibold mb-2 text-white">Gas Fees</h4>
-                <p className="text-sm text-white/70">Transaction and inference fees paid in LATT</p>
+                <p className="text-sm text-white/70">Transaction and inference fees paid in SALT</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-primary text-xl font-bold">2</span>
                 </div>
                 <h4 className="font-semibold mb-2 text-white">Staking</h4>
-                <p className="text-sm text-white/70">Validators stake LATT to secure the network</p>
+                <p className="text-sm text-white/70">Validators stake SALT to secure the network</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center mx-auto mb-3">

@@ -49,7 +49,7 @@ export default function ArchitectureDiagram() {
     {
       icon: Cpu,
       number: "Layer 2",
-      title: "Execution Layer (LVM)",
+      title: "Execution Layer (CVM)",
       features: [
         "EVM-compatible bytecode execution",
         "AI precompiles for model operations",

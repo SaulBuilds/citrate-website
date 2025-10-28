@@ -41,7 +41,7 @@ export default function UseCasesPage() {
       title: "AI Model Marketplace",
       description: "Researchers monetize models while users access diverse AI without platform lock-in.",
       benefits: ["Automated royalty distribution", "Model versioning and provenance", "Access control and licensing", "Discovery through on-chain registry"],
-      example: "A research team deploys a specialized medical AI model, earning LATT tokens every time it's used for diagnosis.",
+      example: "A research team deploys a specialized medical AI model, earning SALT tokens every time it's used for diagnosis.",
     },
     {
       icon: Code,

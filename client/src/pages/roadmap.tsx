@@ -59,7 +59,7 @@ export default function RoadmapPage() {
       status: "upcoming",
       milestones: [
         "Mainnet genesis block",
-        "LATT token distribution",
+        "SALT token distribution",
         "Model marketplace launch",
         "Validator onboarding program",
         "First production AI models deployed",

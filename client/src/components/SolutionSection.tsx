@@ -50,8 +50,8 @@ Citrate BlockDAG:       Block 1 ← Block 3 ← Block 5
     },
     {
       number: "2",
-      title: "EVM-Compatible Execution Layer (LVM)",
-      description: "Citrate's Lattice Virtual Machine (LVM) is 100% EVM-compatible while adding native AI operations.",
+      title: "EVM-Compatible Execution Layer (CVM)",
+      description: "Citrate's Citrate Virtual Machine (CVM) is 100% EVM-compatible while adding native AI operations.",
       benefits: [
         "Deploy existing Solidity contracts without modification",
         "Use MetaMask, Hardhat, Foundry—all Ethereum tools work",

@@ -48,7 +48,7 @@ const model = await registry.registerModel({
 
 // Users pay directly to use your model
 const response = await model.infer("Explain quantum computing");
-// You earn 0.0001 LATT * num_tokens`,
+// You earn 0.0001 SALT * num_tokens`,
         solidity: `contract ModelRegistry {
     function deployModel(
         bytes memory weights,
@@ -98,7 +98,7 @@ const job = await federatedLearning.createJob({
     baseModel: "gpt-3.5-turbo",
     task: "medical-diagnosis",
     minContributors: 100,
-    reward: 1000 // LATT per contributor
+    reward: 1000 // SALT per contributor
 });
 
 // Contributors train locally and submit gradients

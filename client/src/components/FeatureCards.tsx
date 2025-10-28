@@ -67,7 +67,7 @@ export default function FeatureCards() {
         "Block production rewards",
         "Inference computation bonuses",
         "Storage provision incentives",
-        "10,000 LATT minimum stake",
+        "10,000 SALT minimum stake",
         "Delegation support",
         "Governance participation",
       ],

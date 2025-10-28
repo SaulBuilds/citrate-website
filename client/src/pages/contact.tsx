@@ -60,13 +60,7 @@ export default function ContactPage() {
   const onSubmit = async (data: InsertContact) => {
     setIsSubmitting(true);
     try {
-      await apiRequest("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await apiRequest("/api/contact", "POST", data);
       
       toast({
         title: "Message sent!",
@@ -168,7 +162,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Company (Optional)</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Company" {...field} data-testid="input-company" />
+                        <Input placeholder="Your Company" {...field} value={field.value || ""} data-testid="input-company" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
