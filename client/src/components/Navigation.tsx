@@ -22,6 +22,7 @@ export default function Navigation() {
     { label: "Use Cases", href: "#use-cases" },
     { label: "Roadmap", href: "#roadmap" },
     { label: "Dashboard", href: "/dashboard" },
+    { label: "BlockDAG", href: "/blockdag" },
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "#faq" },
   ];

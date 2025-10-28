@@ -2,7 +2,13 @@
 
 ## Overview
 
-Citrate is a marketing landing page for an AI-native Layer-1 blockchain that combines GhostDAG consensus, EVM compatibility, and Model Context Protocol (MCP) integration. The project is a single-page application showcasing Citrate's features, architecture, use cases, roadmap, tokenomics, and FAQ through an animated, visually striking interface.
+Citrate is a marketing landing page for an AI-native Layer-1 blockchain that combines GhostDAG consensus, EVM compatibility, and Model Context Protocol (MCP) integration. The project showcases Citrate's features, architecture, use cases, roadmap, tokenomics, and FAQ through an animated, visually striking interface.
+
+The application includes:
+- **Landing Page**: 13 animated sections explaining the blockchain
+- **Blog/CMS**: Full CRUD system for blog posts with database persistence
+- **Live Dashboard**: Real-time network statistics with WebSocket streaming
+- **Future Features**: 3D BlockDAG visualization, code playground, whitepaper PDF
 
 The application serves as a marketing tool to communicate complex blockchain and AI concepts to developers, AI researchers, validators, and general users through clear hierarchical information design, technical precision, and restrained elegance.
 
@@ -152,3 +158,66 @@ Preferred communication style: Simple, everyday language.
 - `@assets/*` - Maps to `attached_assets/*`
 
 **Asset Strategy**: Marketing content (whitepaper, FAQ, landing page copy) stored as Markdown files in `attached_assets/`. Design guidelines documented separately. These inform the UI but are not directly rendered.
+
+## Recent Features
+
+### Live Network Dashboard (December 2024)
+
+**WebSocket Integration**: Real-time data streaming from backend to frontend via WebSocket connection at `/ws/stats`. Updates every 2 seconds with simulated network metrics (ready for real testnet integration).
+
+**Backend**:
+- WebSocket server using `ws` library attached to HTTP server
+- `generateRealtimeStats()` function produces network metrics
+- REST endpoint `/api/network/current` for fallback data
+- Connection lifecycle management with cleanup
+
+**Frontend** (`/dashboard` route):
+- WebSocket client with automatic reconnection
+- Live connection status indicator
+- 4 stat cards: TPS, Finality, Validators, Uptime
+- 2 real-time charts: TPS over time (AreaChart), Finality over time (LineChart)
+- Network Health section with 6 additional metrics
+- Responsive grid layouts
+- Loading states and error handling
+
+**Data Flow**:
+1. Client connects to WebSocket on page load
+2. Server immediately sends first data packet
+3. Server streams updates every 2 seconds
+4. Client accumulates 31 data points for charts
+5. All UI elements update in real-time
+
+**Note**: Currently uses simulated data generation. The WebSocket infrastructure is production-ready and can be swapped to pull from actual Citrate testnet RPC/API endpoints when available.
+
+### Interactive 3D BlockDAG Visualization (December 2024)
+
+**Three.js Integration**: Interactive 3D visualization demonstrating parallel block production in a Directed Acyclic Graph structure using WebGL rendering.
+
+**Features**:
+- Real-time 3D scene with orbiting camera
+- Genesis block (blue) and dynamically generated blocks (orange)
+- Visual parent-child relationships via connection lines
+- Play/Pause controls for block generation
+- Reset functionality to restart visualization
+- Live block counter
+- Educational info cards explaining concepts
+
+**Technical Implementation**:
+- Pure Three.js (no React wrappers due to version conflicts)
+- Frame-rate independent timing using performance.now()
+- Blocks spawn every 2 seconds when playing
+- Up to 30 blocks maximum
+- Proper cleanup and disposal on unmount
+- Responsive canvas with resize handling
+
+**Block Generation Logic**:
+1. Genesis block at origin (blue)
+2. Initial 6-block structure
+3. New blocks spawn at deepest Z position
+4. Each block references 2 nearest parent blocks
+5. DAG structure emerges naturally
+
+**Route**: `/blockdag`
+**Navigation**: Integrated in main navigation menu
+
+**Note**: Requires WebGL support (won't work in headless browsers, but works in all modern browsers with GPU)

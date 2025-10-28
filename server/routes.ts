@@ -1,7 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { WebSocketServer, WebSocket } from "ws";
 import { storage } from "./db-storage";
 import { insertBlogPostSchema, insertFAQSchema } from "@shared/schema";
+import type { RealtimeNetworkData } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/stats", async (_req, res) => {
@@ -120,6 +122,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   const httpServer = createServer(app);
+
+  const wss = new WebSocketServer({ server: httpServer, path: "/ws/stats" });
+
+  function generateRealtimeStats(): RealtimeNetworkData {
+    return {
+      timestamp: new Date().toISOString(),
+      tps: Math.round(8000 + Math.random() * 4000),
+      finality: parseFloat((10 + Math.random() * 4).toFixed(1)),
+      activeValidators: 2847 + Math.round(Math.random() * 20 - 10),
+      uptime: 99.99,
+      peakTPS: 12487,
+      avgBlockTime: 0.8,
+      totalBlocks: 8234567 + Math.round(Math.random() * 100),
+      activeNodes: 4921 + Math.round(Math.random() * 10),
+      networkHashRate: "42.5 PH/s",
+      mempoolSize: 1000 + Math.round(Math.random() * 500),
+    };
+  }
+
+  wss.on("connection", (ws: WebSocket) => {
+    console.log("WebSocket client connected to /ws/stats");
+
+    ws.send(JSON.stringify(generateRealtimeStats()));
+
+    const interval = setInterval(() => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify(generateRealtimeStats()));
+      }
+    }, 2000);
+
+    ws.on("close", () => {
+      console.log("WebSocket client disconnected from /ws/stats");
+      clearInterval(interval);
+    });
+
+    ws.on("error", (error) => {
+      console.error("WebSocket error:", error);
+      clearInterval(interval);
+    });
+  });
+
+  app.get("/api/network/current", (_req, res) => {
+    res.json(generateRealtimeStats());
+  });
 
   return httpServer;
 }

@@ -75,3 +75,17 @@ export type BlogPost = typeof blogPosts.$inferSelect;
 
 export type InsertFAQ = z.infer<typeof insertFAQSchema>;
 export type FAQ = typeof faqs.$inferSelect;
+
+export interface RealtimeNetworkData {
+  timestamp: string;
+  tps: number;
+  finality: number;
+  activeValidators: number;
+  uptime: number;
+  peakTPS: number;
+  avgBlockTime: number;
+  totalBlocks: number;
+  activeNodes: number;
+  networkHashRate: string;
+  mempoolSize: number;
+}
