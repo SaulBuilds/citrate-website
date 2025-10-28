@@ -16,6 +16,10 @@ The application serves as a marketing tool to communicate complex blockchain and
 
 Preferred communication style: Simple, everyday language.
 
+## GitHub Repository
+
+https://github.com/saulbuilds/citrate
+
 ## System Architecture
 
 ### Frontend Stack
@@ -221,3 +225,37 @@ Preferred communication style: Simple, everyday language.
 **Navigation**: Integrated in main navigation menu
 
 **Note**: Requires WebGL support (won't work in headless browsers, but works in all modern browsers with GPU)
+
+### Logo and Branding Integration (December 2024)
+
+**Citrate Logo Assets**: Multiple logo variations integrated throughout the application:
+- Navigation: citrate_icon_background (orange background with white BlockDAG symbol)
+- Hero Section: Animated logo with GSAP
+- Background Elements: Floating logo particles
+
+**Animated Logo Component** (`AnimatedLogo.tsx`):
+- GSAP-powered entrance animation with rotation, scale, and 3D flip
+- Continuous floating animation (subtle Y-axis movement)
+- Orbiting particle system with independent rotations
+- Glowing radial gradient effect
+- Configurable size, autoplay, and delay props
+
+**Hero Section Enhancements**:
+- Large animated Citrate logo (150px) appears first with dramatic entrance
+- 8 floating background logos with randomized positions and subtle movement
+- Parallax-style floating animations with opacity variations
+- Each logo rotates and drifts independently for depth
+- GitHub button links to https://github.com/saulbuilds/citrate
+
+**Logo Variations Available**:
+- `citrate_icon_background` - Orange background (used in nav)
+- `citrate_icon_orange` - Orange logo on transparent (used in hero/animations)
+- `citrate_icon_black` - Black logo on transparent
+- `citrate_icon` - White logo on transparent
+
+**GSAP Animation Details**:
+- Logo entrance: Scale from 0 with -180° rotation, back.out easing
+- 3D flip: 180° Y-axis rotation during entrance
+- Floating: Infinite sine wave Y-movement over 2 seconds
+- Particles: Staggered entrance, continuous 360° rotation, pulsing scale/opacity
+- Background logos: Random drift (-20 to +20px), rotation (-15° to +15°), opacity fade

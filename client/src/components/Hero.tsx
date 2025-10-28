@@ -2,12 +2,17 @@ import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
 import { ArrowRight, Github } from "lucide-react";
+import AnimatedLogo from "./AnimatedLogo";
+import citrateIconOrange from "@assets/citrate_icon_orange_1761610658378.png";
+import citrateIconBlack from "@assets/citrate_icon_black_1761610658378.png";
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const floatingLogosRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,6 +76,30 @@ export default function Hero() {
           "-=0.5"
         );
       }
+
+      const floatingLogos = floatingLogosRef.current?.querySelectorAll(".floating-logo");
+      if (floatingLogos) {
+        floatingLogos.forEach((logo, i) => {
+          gsap.to(logo, {
+            y: gsap.utils.random(-20, 20),
+            x: gsap.utils.random(-20, 20),
+            rotation: gsap.utils.random(-15, 15),
+            duration: gsap.utils.random(3, 5),
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: i * 0.2,
+          });
+
+          gsap.to(logo, {
+            opacity: gsap.utils.random(0.05, 0.15),
+            duration: gsap.utils.random(2, 4),
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+        });
+      }
     });
 
     return () => ctx.revert();
@@ -80,8 +109,29 @@ export default function Hero() {
     <section className="relative min-h-screen bg-black text-white pt-32 pb-20 px-6 overflow-hidden" data-testid="section-hero">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,149,0,0.05)_0%,transparent_70%)]" />
       
+      <div ref={floatingLogosRef} className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <img
+            key={i}
+            src={citrateIconOrange}
+            alt=""
+            className="floating-logo absolute opacity-5"
+            style={{
+              width: `${80 + i * 20}px`,
+              height: `${80 + i * 20}px`,
+              left: `${10 + i * 12}%`,
+              top: `${15 + (i % 3) * 25}%`,
+            }}
+          />
+        ))}
+      </div>
+      
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-5xl mx-auto">
+          <div ref={logoRef} className="flex justify-center mb-12">
+            <AnimatedLogo size={150} autoPlay={true} delay={0.2} />
+          </div>
+          
           <h1
             ref={titleRef}
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
@@ -110,7 +160,13 @@ export default function Hero() {
               Get Started
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 h-14 min-w-[200px] border-white text-white hover:bg-white/10" data-testid="button-github-hero">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 h-14 min-w-[200px] border-white text-white hover:bg-white/10" 
+              data-testid="button-github-hero"
+              onClick={() => window.open('https://github.com/saulbuilds/citrate', '_blank')}
+            >
               <Github className="mr-2" size={20} />
               View on GitHub
             </Button>

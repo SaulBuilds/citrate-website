@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import citrateLogoOrange from "@assets/citrate_icon_background_1761610658378.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -36,12 +37,16 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">C</span>
+          <Link href="/">
+            <div className="flex items-center gap-3 cursor-pointer group">
+              <img 
+                src={citrateLogoOrange} 
+                alt="Citrate Logo" 
+                className="w-10 h-10 rounded-md transition-transform group-hover:scale-110"
+              />
+              <span className="text-foreground font-bold text-2xl">Citrate</span>
             </div>
-            <span className="text-foreground font-bold text-2xl">Citrate</span>
-          </div>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
