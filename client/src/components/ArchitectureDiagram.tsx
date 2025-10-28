@@ -99,7 +99,7 @@ export default function ArchitectureDiagram() {
                     
                     <div className="flex-1">
                       <div className="text-sm text-primary font-semibold mb-2">{layer.number}</div>
-                      <h3 className="text-2xl md:text-3xl font-bold mb-4">{layer.title}</h3>
+                      <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">{layer.title}</h3>
                       
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>

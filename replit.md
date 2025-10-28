@@ -242,11 +242,10 @@ https://github.com/saulbuilds/citrate
 
 **Hero Section Enhancements**:
 - Large animated Citrate logo (150px) appears first with dramatic entrance
-- 8 background logos positioned in a neural network pattern
-- SVG connection lines between logos creating a network visualization
-- Mechanical, elastic movements (not organic floating)
-- Elastic scale and rotation animations with staggered timing
-- Pulsing connection lines with gradient effects
+- Single large background logo (800px, 3% opacity, slow rotation, breathing effect)
+- Minimal, clean aesthetic with one centered animated logo
+- Removed BlockDAG comparison diagram for cleaner design
+- Removed bottom gradient for seamless transitions
 - GitHub button links to https://github.com/saulbuilds/citrate
 
 **Logo Variations Available**:
@@ -260,7 +259,6 @@ https://github.com/saulbuilds/citrate
 - 3D flip: 180° Y-axis rotation during entrance
 - Floating: Infinite sine wave Y-movement over 2 seconds
 - Particles: Staggered entrance, continuous 360° rotation, pulsing scale/opacity
-- Background network: Elastic scale (1.0 to 1.15) with elastic.inOut easing
-- Network rotations: Alternating ±5° with elastic.inOut for mechanical effect
-- Connection lines: Pulsing opacity (0.15 to 0.3) with linear gradients
-- Neural network structure: Each node connects to 2-3 nearest neighbors
+- Background logo: Dramatic entrance (scale 0.8→1.0, rotate -45°→0°, fade 0→3%)
+- Continuous rotation: Full 360° every 120 seconds
+- Breathing effect: Scale 1.0→1.05 over 8 seconds with sine easing

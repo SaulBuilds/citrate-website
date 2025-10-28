@@ -96,7 +96,7 @@ export default function Tokenomics() {
             >
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h3 className="text-xl font-bold">{allocation.name}</h3>
+                  <h3 className="text-xl font-bold text-white">{allocation.name}</h3>
                   <p className="text-sm text-white/60">{allocation.purpose}</p>
                 </div>
                 <div className="text-right">
@@ -121,27 +121,27 @@ export default function Tokenomics() {
 
         <div className="mt-20 max-w-4xl mx-auto">
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-6 text-center">Token Utility</h3>
+            <h3 className="text-2xl font-bold mb-6 text-center text-white">Token Utility</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-primary text-xl font-bold">1</span>
                 </div>
-                <h4 className="font-semibold mb-2">Gas Fees</h4>
+                <h4 className="font-semibold mb-2 text-white">Gas Fees</h4>
                 <p className="text-sm text-white/70">Transaction and inference fees paid in LATT</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-primary text-xl font-bold">2</span>
                 </div>
-                <h4 className="font-semibold mb-2">Staking</h4>
+                <h4 className="font-semibold mb-2 text-white">Staking</h4>
                 <p className="text-sm text-white/70">Validators stake LATT to secure the network</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-primary text-xl font-bold">3</span>
                 </div>
-                <h4 className="font-semibold mb-2">Governance</h4>
+                <h4 className="font-semibold mb-2 text-white">Governance</h4>
                 <p className="text-sm text-white/70">Vote on protocol upgrades and parameters</p>
               </div>
             </div>
