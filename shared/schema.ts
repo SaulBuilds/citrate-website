@@ -41,3 +41,37 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
+export const blogPosts = pgTable("blog_posts", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
+  content: text("content").notNull(),
+  excerpt: text("excerpt").notNull(),
+  author: text("author").notNull(),
+  publishedAt: text("published_at").notNull(),
+  category: text("category").notNull(),
+  tags: text("tags").array().notNull().default(sql`ARRAY[]::text[]`),
+  featured: integer("featured").notNull().default(0),
+});
+
+export const faqs = pgTable("faqs", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  question: text("question").notNull(),
+  answer: text("answer").notNull(),
+  order: integer("order").notNull().default(0),
+});
+
+export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({
+  id: true,
+});
+
+export const insertFAQSchema = createInsertSchema(faqs).omit({
+  id: true,
+});
+
+export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
+export type BlogPost = typeof blogPosts.$inferSelect;
+
+export type InsertFAQ = z.infer<typeof insertFAQSchema>;
+export type FAQ = typeof faqs.$inferSelect;

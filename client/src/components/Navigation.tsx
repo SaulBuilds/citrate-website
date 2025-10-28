@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
+  const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,6 +21,7 @@ export default function Navigation() {
     { label: "Architecture", href: "#architecture" },
     { label: "Use Cases", href: "#use-cases" },
     { label: "Roadmap", href: "#roadmap" },
+    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -39,17 +42,30 @@ export default function Navigation() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-foreground/70 hover:text-foreground transition-colors relative group"
-                data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isExternal = link.href.startsWith("/");
+              return isExternal ? (
+                <Link key={link.href} href={link.href}>
+                  <span
+                    className="text-foreground/70 hover:text-foreground transition-colors relative group cursor-pointer"
+                    data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {link.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </span>
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-foreground/70 hover:text-foreground transition-colors relative group"
+                  data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                </a>
+              );
+            })}
           </div>
 
           <div className="hidden md:flex items-center gap-4">
