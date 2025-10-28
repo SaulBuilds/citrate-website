@@ -114,15 +114,14 @@ export default function FullScreenNav({ isOpen, onClose }: FullScreenNavProps) {
         {/* Menu items */}
         <nav className="flex flex-col items-center gap-6">
           {navLinks.map((link, index) => (
-            <Link key={link.href} href={link.href}>
-              <a
-                className="menu-item text-4xl md:text-6xl font-bold text-white hover:text-primary transition-all duration-300 cursor-pointer relative group"
-                onClick={handleLinkClick}
+            <Link key={link.href} href={link.href} onClick={handleLinkClick}>
+              <span
+                className="menu-item text-4xl md:text-6xl font-bold text-white hover:text-primary transition-all duration-300 cursor-pointer relative group block"
                 data-testid={`menu-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {link.label}
                 <span className="absolute -bottom-2 left-0 w-0 h-1 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
+              </span>
             </Link>
           ))}
         </nav>
