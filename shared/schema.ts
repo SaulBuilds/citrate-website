@@ -76,6 +76,23 @@ export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertFAQ = z.infer<typeof insertFAQSchema>;
 export type FAQ = typeof faqs.$inferSelect;
 
+export const contacts = pgTable("contacts", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  company: text("company"),
+  message: text("message").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+});
+
+export const insertContactSchema = createInsertSchema(contacts).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertContact = z.infer<typeof insertContactSchema>;
+export type Contact = typeof contacts.$inferSelect;
+
 export interface RealtimeNetworkData {
   timestamp: string;
   tps: number;

@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import { storage } from "./db-storage";
-import { insertBlogPostSchema, insertFAQSchema } from "@shared/schema";
+import { insertBlogPostSchema, insertFAQSchema, insertContactSchema } from "@shared/schema";
 import type { RealtimeNetworkData } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -165,6 +165,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/network/current", (_req, res) => {
     res.json(generateRealtimeStats());
+  });
+
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertContactSchema.parse(req.body);
+      const contact = await storage.createContact(validatedData);
+      res.status(201).json({ success: true, message: "Thank you for contacting us! We'll be in touch soon." });
+    } catch (error) {
+      res.status(400).json({ error: "Invalid contact form data" });
+    }
+  });
+
+  app.get("/api/admin/contacts", async (_req, res) => {
+    try {
+      const contacts = await storage.getAllContacts();
+      res.json(contacts);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch contacts" });
+    }
   });
 
   return httpServer;

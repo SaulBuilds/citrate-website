@@ -3,12 +3,15 @@ import {
   users, 
   faqs, 
   blogPosts,
+  contacts,
   type User, 
   type InsertUser,
   type BlogPost,
   type InsertBlogPost,
   type FAQ,
   type InsertFAQ,
+  type Contact,
+  type InsertContact,
   type FAQItem,
   type StatsData
 } from "@shared/schema";
@@ -31,6 +34,9 @@ export interface IStorage {
   createFAQ(faq: InsertFAQ): Promise<FAQ>;
   updateFAQ(id: string, faq: Partial<InsertFAQ>): Promise<FAQ | undefined>;
   deleteFAQ(id: string): Promise<boolean>;
+  
+  createContact(contact: InsertContact): Promise<Contact>;
+  getAllContacts(): Promise<Contact[]>;
 }
 
 export class DBStorage implements IStorage {
@@ -154,6 +160,15 @@ export class DBStorage implements IStorage {
   async deleteFAQ(id: string): Promise<boolean> {
     await db.delete(faqs).where(eq(faqs.id, id));
     return true;
+  }
+
+  async createContact(contact: InsertContact): Promise<Contact> {
+    const [created] = await db.insert(contacts).values(contact).returning();
+    return created;
+  }
+
+  async getAllContacts(): Promise<Contact[]> {
+    return db.select().from(contacts).orderBy(desc(contacts.createdAt));
   }
 }
 
