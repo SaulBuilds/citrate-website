@@ -19,6 +19,7 @@ export default function ProblemSection() {
           y: 30,
           duration: 0.8,
           ease: "power3.out",
+          immediateRender: false,
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 70%",
@@ -34,6 +35,7 @@ export default function ProblemSection() {
           stagger: 0.15,
           duration: 0.8,
           ease: "power3.out",
+          immediateRender: false,
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 60%",
