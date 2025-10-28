@@ -30,6 +30,7 @@ export default function ProblemSection() {
         gsap.from(cards, {
           opacity: 0,
           y: 40,
+          scale: 0.95,
           stagger: 0.15,
           duration: 0.8,
           ease: "power3.out",
@@ -74,7 +75,7 @@ export default function ProblemSection() {
   return (
     <section ref={sectionRef} className="py-24 bg-black text-white" data-testid="section-problem" id="problems">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="section-title text-4xl md:text-6xl font-bold text-center mb-16" data-testid="text-problem-title">
+        <h2 className="section-title text-4xl md:text-6xl font-bold text-center mb-16 text-white" data-testid="text-problem-title">
           Current Blockchain Limitations
         </h2>
 
@@ -84,7 +85,7 @@ export default function ProblemSection() {
             return (
               <div
                 key={problem.title}
-                className="problem-card group bg-zinc-800 border-2 border-zinc-600 rounded-lg p-8 transition-all duration-300 hover:border-primary hover:shadow-[0_0_30px_rgba(255,149,0,0.2)]"
+                className="problem-card group bg-[#1A1A1A] border-2 border-[#404040] rounded-lg p-8 transition-all duration-300 hover:border-primary hover:bg-[#222222] hover:shadow-[0_0_30px_rgba(255,149,0,0.2)]"
                 data-testid={problem.testId}
               >
                 <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
