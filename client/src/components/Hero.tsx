@@ -81,24 +81,37 @@ export default function Hero() {
       if (floatingLogos) {
         floatingLogos.forEach((logo, i) => {
           gsap.to(logo, {
-            y: gsap.utils.random(-20, 20),
-            x: gsap.utils.random(-20, 20),
-            rotation: gsap.utils.random(-15, 15),
-            duration: gsap.utils.random(3, 5),
+            scale: 1.15,
+            duration: 1.2 + i * 0.15,
             repeat: -1,
             yoyo: true,
-            ease: "sine.inOut",
-            delay: i * 0.2,
+            ease: "elastic.inOut(1, 0.3)",
+            delay: i * 0.1,
           });
 
           gsap.to(logo, {
-            opacity: gsap.utils.random(0.05, 0.15),
-            duration: gsap.utils.random(2, 4),
+            rotation: i % 2 === 0 ? 5 : -5,
+            duration: 1.5 + i * 0.1,
             repeat: -1,
             yoyo: true,
-            ease: "sine.inOut",
+            ease: "elastic.inOut(1, 0.5)",
+            delay: i * 0.15,
           });
         });
+
+        const connections = floatingLogosRef.current?.querySelectorAll(".network-connection");
+        if (connections) {
+          connections.forEach((connection, i) => {
+            gsap.to(connection, {
+              strokeOpacity: 0.3,
+              duration: 1 + i * 0.1,
+              repeat: -1,
+              yoyo: true,
+              ease: "power1.inOut",
+              delay: i * 0.2,
+            });
+          });
+        }
       }
     });
 
@@ -110,17 +123,52 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,149,0,0.05)_0%,transparent_70%)]" />
       
       <div ref={floatingLogosRef} className="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+          <defs>
+            <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(255,149,0,0)" />
+              <stop offset="50%" stopColor="rgba(255,149,0,0.15)" />
+              <stop offset="100%" stopColor="rgba(255,149,0,0)" />
+            </linearGradient>
+          </defs>
+          {[...Array(8)].map((_, i) => {
+            const connections = [];
+            const x1 = 10 + i * 12;
+            const y1 = 15 + (i % 3) * 25;
+            
+            for (let j = i + 1; j < Math.min(i + 3, 8); j++) {
+              const x2 = 10 + j * 12;
+              const y2 = 15 + (j % 3) * 25;
+              connections.push(
+                <line
+                  key={`${i}-${j}`}
+                  className="network-connection"
+                  x1={`${x1}%`}
+                  y1={`${y1}%`}
+                  x2={`${x2}%`}
+                  y2={`${y2}%`}
+                  stroke="url(#connectionGradient)"
+                  strokeWidth="1.5"
+                  strokeOpacity="0.15"
+                />
+              );
+            }
+            return connections;
+          })}
+        </svg>
+        
         {[...Array(8)].map((_, i) => (
           <img
             key={i}
             src={citrateIconOrange}
             alt=""
-            className="floating-logo absolute opacity-5"
+            className="floating-logo absolute opacity-10"
             style={{
-              width: `${80 + i * 20}px`,
-              height: `${80 + i * 20}px`,
+              width: `${80 + i * 15}px`,
+              height: `${80 + i * 15}px`,
               left: `${10 + i * 12}%`,
               top: `${15 + (i % 3) * 25}%`,
+              zIndex: 1,
             }}
           />
         ))}
