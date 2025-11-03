@@ -113,7 +113,7 @@ export default function DownloadsPage() {
             <span className="text-primary">Downloads</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto">
-            Get started with Citrate. Download the core node, SDKs, and tools to build on the AI-native blockchain.
+            Download the node, SDKs, and tools.
           </p>
         </div>
       </section>
@@ -124,14 +124,11 @@ export default function DownloadsPage() {
             {downloads.map((download, index) => {
               const Icon = download.icon;
               return (
-                <div
-                  key={index}
-                  className="download-card bg-card border-2 border-border rounded-lg p-8 hover:border-primary hover:shadow-[0_0_30px_rgba(255,149,0,0.15)] transition-all duration-300"
-                >
+                <div key={index} className="download-card bg-card border-2 border-border rounded-lg p-8 hover:border-primary transition-all duration-300">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     <div className="lg:col-span-2">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className="w-14 h-14 bg-primary/20 border-2 border-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div className="w-14 h-14 bg-primary/20 border border-primary rounded-lg flex items-center justify-center flex-shrink-0">
                           <Icon size={28} className="text-primary" />
                         </div>
                         <div className="flex-1">
@@ -190,7 +187,7 @@ export default function DownloadsPage() {
           </div>
 
           <div className="mt-24">
-            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Additional Resources</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {resources.map((resource, index) => {
                 const Icon = resource.icon;
@@ -200,9 +197,9 @@ export default function DownloadsPage() {
                     href={resource.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-card border-2 border-border rounded-lg p-6 hover:border-primary transition-all duration-300"
+                    className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-all duration-300"
                   >
-                    <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-lg flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-primary/20 border border-primary rounded-lg flex items-center justify-center mb-4">
                       <Icon size={24} className="text-primary" />
                     </div>
                     <h3 className="text-xl font-bold mb-2 text-foreground">{resource.title}</h3>

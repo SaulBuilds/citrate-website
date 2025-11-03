@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion, batchScrollFade } from "@/lib/anim";
 import { Code2, FlaskConical, Server } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,31 +11,17 @@ export default function FeatureCards() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = sectionRef.current?.querySelectorAll(".feature-card");
-      
-      if (cards) {
-        gsap.from(cards, {
-          opacity: 0,
-          y: 50,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        });
-      }
+      if (prefersReducedMotion()) return;
+      batchScrollFade(sectionRef.current?.querySelectorAll(".feature-card") || []);
     });
-
     return () => ctx.revert();
   }, []);
 
   const features = [
     {
       icon: Code2,
-      title: "For Developers",
-      description: "Build with familiar tools and deploy AI models as first-class assets",
+      title: "Developers",
+      description: "Build with familiar tools. Deploy AI as first-class assets.",
       features: [
         "100% EVM compatibility",
         "Solidity/Vyper support",
@@ -47,8 +34,8 @@ export default function FeatureCards() {
     },
     {
       icon: FlaskConical,
-      title: "For AI Researchers",
-      description: "Monetize your models and ensure verifiable, reproducible inference",
+      title: "Researchers",
+      description: "Monetize models with verifiable, reproducible inference.",
       features: [
         "Decentralized model marketplace",
         "Automatic versioning & IPFS storage",
@@ -61,8 +48,8 @@ export default function FeatureCards() {
     },
     {
       icon: Server,
-      title: "For Validators",
-      description: "Enhanced economics with GPU-based rewards and flexible staking",
+      title: "Validators",
+      description: "Earn from consensus and GPU inference rewards.",
       features: [
         "Block production rewards",
         "Inference computation bonuses",
@@ -76,10 +63,10 @@ export default function FeatureCards() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white" data-testid="section-features">
+    <section ref={sectionRef} className="py-20 bg-white" data-testid="section-features">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-6xl font-bold text-center mb-4" data-testid="text-features-title">
-          Built for <span className="text-primary">Everyone</span>
+          Built for <span className="text-primary">Builders</span>
         </h2>
         <p className="text-xl text-center text-muted-foreground mb-20 max-w-3xl mx-auto">
           Whether you're building, researching, or validating
@@ -91,10 +78,10 @@ export default function FeatureCards() {
             return (
               <div
                 key={feature.title}
-                className="feature-card group border-2 border-border rounded-lg p-8 transition-all duration-300 hover:border-primary hover:-translate-y-1 hover:shadow-lg"
+                className="feature-card group border border-border rounded-lg p-8 transition-all duration-300 hover:border-primary hover:-translate-y-1"
                 data-testid={feature.testId}
               >
-                <div className="w-16 h-16 bg-primary/10 border-2 border-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-primary/10 border border-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
                   <Icon size={32} className="text-primary" />
                 </div>
                 

@@ -16,7 +16,7 @@ export async function seedDatabase() {
       slug: 'introducing-citrate',
       content: `We're thrilled to announce Citrate, the world's first AI-native Layer-1 blockchain that fundamentally reimagines how artificial intelligence and blockchain technology can work together.
 
-After two years of research and development, we've built a platform that combines three groundbreaking innovations: GhostDAG consensus for 10,000+ TPS throughput, full EVM compatibility through our Lattice Virtual Machine, and native integration with the Model Context Protocol (MCP) for standardized AI operations.
+After two years of research and development, we've built a platform that combines three groundbreaking innovations: GhostDAG consensus for 10,000+ TPS throughput, full EVM compatibility through our Citrate Virtual Machine (CVM), and native integration with the Model Context Protocol (MCP) for standardized AI operations.
 
 **Why AI Needs Its Own Blockchain**
 

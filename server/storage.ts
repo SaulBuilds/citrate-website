@@ -39,7 +39,7 @@ export class MemStorage implements IStorage {
       },
       {
         question: "Is Citrate really EVM-compatible?",
-        answer: "Yes, 100%. The Lattice Virtual Machine (LVM) executes the same bytecode as Ethereum. All Solidity code, Hardhat, Foundry, MetaMask, and Ethereum tools work without modification. You can deploy existing Ethereum contracts directly to Citrate.",
+        answer: "Yes, 100%. The Citrate Virtual Machine (CVM) executes the same bytecode as Ethereum. All Solidity code, Hardhat, Foundry, MetaMask, and Ethereum tools work without modification. You can deploy existing Ethereum contracts directly to Citrate.",
       },
       {
         question: "How are AI models stored on-chain?",

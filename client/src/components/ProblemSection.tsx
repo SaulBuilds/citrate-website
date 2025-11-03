@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion, batchScrollFade } from "@/lib/anim";
 import { Zap, Database, ShieldAlert, Shuffle } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,40 +11,12 @@ export default function ProblemSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion()) return;
       const title = sectionRef.current?.querySelector(".section-title");
-      const cards = sectionRef.current?.querySelectorAll(".problem-card");
-
-      if (title) {
-        gsap.from(title, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          ease: "power3.out",
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        });
-      }
-
-      if (cards) {
-        gsap.from(cards, {
-          opacity: 0,
-          y: 40,
-          scale: 0.95,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: "power3.out",
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 60%",
-          },
-        });
-      }
+      if (title) gsap.from(title, { opacity: 0, y: 24, duration: 0.6, ease: "power3.out" });
+      const cards = sectionRef.current?.querySelectorAll(".problem-card") || [];
+      batchScrollFade(cards as any);
     });
-
     return () => ctx.revert();
   }, []);
 
@@ -75,10 +48,10 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-black text-white" data-testid="section-problem" id="problems">
+    <section ref={sectionRef} className="py-20 bg-black text-white" data-testid="section-problem" id="problems">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="section-title text-4xl md:text-6xl font-bold text-center mb-16 text-white" data-testid="text-problem-title">
-          Current Blockchain Limitations
+          Why AI‑Native Matters
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -87,10 +60,10 @@ export default function ProblemSection() {
             return (
               <div
                 key={problem.title}
-                className="problem-card group bg-[#1A1A1A] border-2 border-[#404040] rounded-lg p-8 transition-all duration-300 hover:border-primary hover:bg-[#222222] hover:shadow-[0_0_30px_rgba(255,149,0,0.2)]"
+                className="problem-card group bg-[#1A1A1A] border border-[#404040] rounded-lg p-8 transition-all duration-300 hover:border-primary hover:bg-[#222222]"
                 data-testid={problem.testId}
               >
-                <div className="w-12 h-12 bg-primary/20 border-2 border-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 bg-primary/20 border border-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
                   <Icon size={28} className="text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-white">{problem.title}</h3>

@@ -15,13 +15,11 @@ export default function FullScreenNav({ isOpen, onClose }: FullScreenNavProps) {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Features", href: "/features" },
-    { label: "Architecture", href: "/architecture" },
+    { label: "Technology", href: "/technology" },
     { label: "Use Cases", href: "/use-cases" },
-    { label: "Roadmap", href: "/roadmap" },
     { label: "Dashboard", href: "/dashboard" },
     { label: "BlockDAG", href: "/blockdag" },
-    { label: "Documentation", href: "/documentation" },
+    { label: "Docs", href: "/documentation" },
     { label: "Downloads", href: "/downloads" },
     { label: "Contact", href: "/contact" },
     { label: "Blog", href: "/blog" },

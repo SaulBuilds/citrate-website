@@ -89,10 +89,10 @@ export default function ArchitectureDiagram() {
             const Icon = layer.icon;
             return (
               <div key={layer.number} className="layer" data-testid={layer.testId}>
-                <div className="relative border-2 border-zinc-600 rounded-lg p-8 md:p-10 bg-zinc-800 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
+                <div className="relative border border-zinc-600 rounded-lg p-8 md:p-10 bg-zinc-800 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
                   <div className="flex items-start gap-6">
                     <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-primary/20 border-2 border-primary rounded-lg flex items-center justify-center">
+                      <div className="w-16 h-16 bg-primary/20 border border-primary rounded-lg flex items-center justify-center">
                         <Icon size={32} className="text-primary" />
                       </div>
                     </div>
