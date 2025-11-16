@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion, batchScrollFade } from "@/lib/anim";
+import HexMesh from "@/components/graphics/HexMesh";
 import { Zap, Database, ShieldAlert, Shuffle } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -48,10 +49,11 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-black text-white" data-testid="section-problem" id="problems">
-      <div className="max-w-7xl mx-auto px-6">
+    <section ref={sectionRef} className="relative py-20 bg-black text-white overflow-hidden" data-testid="section-problem" id="problems">
+      <HexMesh className="absolute inset-0 opacity-30 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <h2 className="section-title text-4xl md:text-6xl font-bold text-center mb-16 text-white" data-testid="text-problem-title">
-          Why AI‑Native Matters
+          Where blockchains fall short for AI.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

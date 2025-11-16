@@ -42,11 +42,11 @@ export default function Hero() {
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
             data-testid="text-hero-title"
           >
-            <span className="word inline-block">Welcome</span>{" "}
-            <span className="word inline-block">to</span>{" "}
+            <span className="word inline-block">Build</span>{" "}
+            <span className="word inline-block">on</span>{" "}
             <span className="word inline-block">the</span>{" "}
-            <span className="word inline-block text-primary">AI-Native</span>{" "}
-            <span className="word inline-block">Blockchain</span>
+            <span className="word inline-block text-primary">AI‑Native</span>{" "}
+            <span className="word inline-block">BlockDAG</span>
           </h1>
 
           <p
@@ -54,7 +54,7 @@ export default function Hero() {
             className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed"
             data-testid="text-hero-subtitle"
           >
-            GhostDag Consensus, EVM Compatibility, and MCP for scalable distribution of models and inference on-chain.
+            Verifiable inference, EVM‑compatible execution, and MCP orchestration—built for models, not just tokens.
           </p>
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">

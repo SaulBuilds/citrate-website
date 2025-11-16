@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Menu } from "lucide-react";
-import citrateLogoOrange from "@assets/citrate_icon_background_1761610658378.png";
+import CitrateMark from "@/components/graphics/CitrateMark";
 import FullScreenNav from "./FullScreenNav";
 
 export default function Navigation() {
@@ -28,11 +28,7 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-20">
             <Link href="/">
               <div className="flex items-center gap-3 cursor-pointer group">
-                <img
-                  src={citrateLogoOrange}
-                  alt="Citrate Logo"
-                  className="w-10 h-10 rounded-md transition-transform group-hover:scale-110"
-                />
+                <CitrateMark size={40} className="transition-transform group-hover:scale-110" />
                 <span className="font-bold text-2xl text-[#ffffff]">Citrate</span>
               </div>
             </Link>

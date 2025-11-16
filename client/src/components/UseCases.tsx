@@ -167,7 +167,7 @@ const image = await nft.getImage(tokenId);`,
           Real-World <span className="text-primary">Use Cases</span>
         </h2>
         <p className="text-xl text-center text-muted-foreground mb-20 max-w-3xl mx-auto">
-          From DeFi to AI-powered NFTs, Citrate enables new possibilities
+          Trustless AI for real products, not demos.
         </p>
 
         <div className="space-y-24">

@@ -8,6 +8,7 @@ import FeatureCards from "@/components/FeatureCards";
 import { Layers, Cpu, Cloud, Database, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import P5ShaderCanvas from "@/components/graphics/P5ShaderCanvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -93,10 +94,13 @@ export default function TechnologyPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <section ref={heroRef} className="pt-32 pb-20 px-6 bg-black text-white">
-        <div className="max-w-7xl mx-auto text-center">
+      <section ref={heroRef} className="relative pt-32 pb-20 px-6 bg-black text-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-70">
+          <P5ShaderCanvas className="w-full h-full" speed={0.8} opacity={0.85} />
+        </div>
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6">Technology</h1>
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-8">Three layers, one AI‑native chain.</p>
+          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-8">Three layers, one AI‑native chain—verifiable, fast, composable.</p>
           <Link href="/">
             <Button variant="outline" size="lg">Back to Homepage</Button>
           </Link>

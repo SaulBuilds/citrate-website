@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import citrateIconOrange from "@assets/citrate_icon_orange_1761610658378.png";
+import CitrateMark from "@/components/graphics/CitrateMark";
 
 interface AnimatedLogoProps {
   size?: number;
@@ -10,7 +10,7 @@ interface AnimatedLogoProps {
 
 export default function AnimatedLogo({ size = 200, autoPlay = true, delay = 0 }: AnimatedLogoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLImageElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
   const particles = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
@@ -104,13 +104,9 @@ export default function AnimatedLogo({ size = 200, autoPlay = true, delay = 0 }:
         ))}
       </div>
 
-      <img
-        ref={logoRef}
-        src={citrateIconOrange}
-        alt="Citrate Logo"
-        className="relative z-10"
-        style={{ width: size * 0.6, height: size * 0.6 }}
-      />
+      <div ref={logoRef} className="relative z-10 flex items-center justify-center" style={{ width: size * 0.6, height: size * 0.6 }}>
+        <CitrateMark size={Math.floor(size * 0.6)} />
+      </div>
 
       <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent blur-xl" />
     </div>

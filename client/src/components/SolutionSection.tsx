@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BlockDagOrbit from "@/components/graphics/BlockDagOrbit";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,16 +95,17 @@ POST /v1/jobs                      # Async inference jobs`,
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white" data-testid="section-solution" id="features">
+    <section ref={sectionRef} className="relative py-24 bg-white overflow-hidden" data-testid="section-solution" id="features">
+      <BlockDagOrbit className="absolute inset-0 opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-4" data-testid="text-solution-title">
-          The Solution: <span className="text-primary">Citrate</span>
+        <h2 className="text-4xl md:text-6xl font-bold text-center mb-4 relative z-10" data-testid="text-solution-title">
+          The AI‑native stack, end‑to‑end.
         </h2>
-        <p className="text-xl text-center text-muted-foreground mb-20 max-w-3xl mx-auto">
+        <p className="text-xl text-center text-muted-foreground mb-20 max-w-3xl mx-auto relative z-10">
           Three Core Innovations
         </p>
 
-        <div className="space-y-24">
+        <div className="space-y-24 relative z-10">
           {innovations.map((innovation) => (
             <div key={innovation.number} className="innovation-item" data-testid={innovation.testId}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

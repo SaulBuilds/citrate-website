@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { X } from "lucide-react";
 import gsap from "gsap";
-import citrateIconOrange from "@assets/citrate_icon_orange_1761610658378.png";
+import CitrateMark from "@/components/graphics/CitrateMark";
 
 interface FullScreenNavProps {
   isOpen: boolean;
@@ -96,7 +96,7 @@ export default function FullScreenNav({ isOpen, onClose }: FullScreenNavProps) {
       <div ref={menuRef} className="h-full flex flex-col items-center justify-center px-6">
         {/* Logo */}
         <div className="menu-logo absolute top-8 left-8 flex items-center gap-3">
-          <img src={citrateIconOrange} alt="Citrate" className="w-12 h-12" />
+          <CitrateMark size={48} />
           <span className="text-white font-bold text-2xl">Citrate</span>
         </div>
 

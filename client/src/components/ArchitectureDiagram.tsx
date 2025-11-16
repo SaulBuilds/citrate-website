@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Layers, Cpu, Cloud } from "lucide-react";
+import P5ShaderCanvas from "@/components/graphics/P5ShaderCanvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,16 +76,19 @@ export default function ArchitectureDiagram() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-black text-white" data-testid="section-architecture" id="architecture">
+    <section ref={sectionRef} className="relative py-24 bg-black text-white overflow-hidden" data-testid="section-architecture" id="architecture">
+      <div className="absolute inset-0 pointer-events-none opacity-60">
+        <P5ShaderCanvas className="w-full h-full" speed={0.6} opacity={0.8} />
+      </div>
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-4" data-testid="text-architecture-title">
+        <h2 className="text-4xl md:text-6xl font-bold text-center mb-4 relative z-10" data-testid="text-architecture-title">
           Technical Architecture
         </h2>
-        <p className="text-xl text-center text-white/70 mb-20 max-w-3xl mx-auto">
-          Three-Layer Design for AI-Native Blockchain
+        <p className="text-xl text-center text-white/70 mb-20 max-w-3xl mx-auto relative z-10">
+          Three‑layer design for trustless AI compute.
         </p>
 
-        <div className="space-y-8 max-w-5xl mx-auto">
+        <div className="space-y-8 max-w-5xl mx-auto relative z-10">
           {layers.map((layer, index) => {
             const Icon = layer.icon;
             return (
